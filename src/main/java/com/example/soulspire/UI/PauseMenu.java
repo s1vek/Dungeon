@@ -1,4 +1,6 @@
 package com.example.soulspire.UI;
 
-public class PauseMenu {
+import javafx.scene.layout.VBox;
+
+public class PauseMenu extends VBox {
 }

@@ -1,4 +1,6 @@
 package com.example.soulspire.UI;
 
-public class MainMenuScreen {
+import javafx.scene.layout.VBox;
+
+public class MainMenuScreen extends VBox {
 }

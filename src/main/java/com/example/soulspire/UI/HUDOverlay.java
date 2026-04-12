@@ -1,4 +1,6 @@
 package com.example.soulspire.UI;
 
-public class HUDOverlay {
+import javafx.scene.layout.BorderPane;
+
+public class HUDOverlay extends BorderPane {
 }

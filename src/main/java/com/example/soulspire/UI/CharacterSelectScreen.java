@@ -1,4 +1,6 @@
 package com.example.soulspire.UI;
 
-public class CharacterSelectScreen {
+import javafx.scene.layout.VBox;
+
+public class CharacterSelectScreen extends VBox {
 }
