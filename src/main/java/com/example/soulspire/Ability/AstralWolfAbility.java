@@ -1,0 +1,52 @@
+package com.example.soulspire.Ability;
+
+import com.example.soulspire.Ability.Ability;
+import com.example.soulspire.Ability.AbilityType;
+import com.example.soulspire.Entity.Player.Player;
+
+/**
+ * Shaman ability 3: Transform into an astral wolf for 7 seconds,
+ * greatly increasing movement speed.
+ */
+public class AstralWolfAbility extends Ability {
+
+    private static final double DURATION = 7.0;
+    private static final double SPEED_MULTIPLIER = 2.0;
+
+    private boolean active;
+    private double remainingDuration;
+    private Player casterRef;
+    private double originalSpeed;
+
+    public AstralWolfAbility() {
+        super("Astral Wolf", "Transform into a wolf with increased speed", 20.0, AbilityType.MOBILITY);
+        this.active = false;
+    }
+
+    @Override
+    public void execute(Player caster, double targetX, double targetY) {
+        if (active) return;
+        active = true;
+        remainingDuration = DURATION;
+        casterRef = caster;
+        originalSpeed = caster.getMoveSpeed();
+        caster.setMoveSpeed(originalSpeed * SPEED_MULTIPLIER);
+        // TODO: swap sprite to wolf form
+        resetCooldown();
+    }
+
+    @Override
+    public void update(double deltaTime) {
+        super.update(deltaTime);
+        if (active) {
+            remainingDuration -= deltaTime;
+            if (remainingDuration <= 0) {
+                active = false;
+                if (casterRef != null) {
+                    casterRef.setMoveSpeed(originalSpeed);
+                    // TODO: swap sprite back to normal
+                }
+            }
+        }
+    }
+}
