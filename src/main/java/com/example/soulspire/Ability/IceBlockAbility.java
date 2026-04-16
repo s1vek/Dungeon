@@ -21,26 +21,11 @@ public class IceBlockAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        active = true;
-        remainingDuration = DURATION;
-        casterRef = caster;
-        caster.setInvulnerable(true);
-        caster.setMoveSpeed(0);
-        resetCooldown();
+
     }
 
     @Override
     public void update(double deltaTime) {
-        super.update(deltaTime);
-        if (active) {
-            remainingDuration -= deltaTime;
-            if (remainingDuration <= 0) {
-                active = false;
-                if (casterRef != null) {
-                    casterRef.setInvulnerable(false);
-                    casterRef.setMoveSpeed(casterRef.getPlayerType().getBaseSpeed());
-                }
-            }
-        }
+
     }
 }

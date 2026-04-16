@@ -21,13 +21,6 @@ public class ArcaneOrbAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        int damage = (int)(caster.getAttackDamage() * 2.0);
-        Projectile orb = new Projectile(
-                caster.getCenterX(), caster.getCenterY(),
-                targetX, targetY, ORB_SPEED, damage, ORB_RANGE, caster
-        );
-        orb.setColor(Color.BLUEVIOLET);
-        // TODO: add orb to floor entities, on hit → processAreaDamage with EXPLOSION_RADIUS
-        resetCooldown();
+
     }
 }

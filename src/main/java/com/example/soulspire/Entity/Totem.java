@@ -44,36 +44,12 @@ public class Totem extends Entity {
 
     @Override
     public void update(double deltaTime) {
-        remainingDuration -= deltaTime;
-        if (remainingDuration <= 0) {
-            setActive(false);
-            return;
-        }
 
-        healTimer += deltaTime;
-        if (healTimer >= healInterval) {
-            healTimer -= healInterval;
-            // Heal owner if within radius
-            if (distanceTo(owner) <= radius) {
-                owner.heal(healAmount);
-            }
-        }
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        double centerX = screenX + width / 2;
-        double centerY = screenY + height / 2;
 
-        // Draw radius indicator
-        gc.setStroke(Color.rgb(100, 255, 100, 0.2));
-        gc.strokeOval(centerX - radius, centerY - radius, radius * 2, radius * 2);
-
-        // Draw totem body
-        gc.setFill(Color.LIMEGREEN);
-        gc.fillRect(screenX, screenY, width, height);
     }
 
     public double getRemainingDuration() { return remainingDuration; }

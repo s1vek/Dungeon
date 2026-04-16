@@ -37,31 +37,16 @@ public class ChestGuardian extends Enemy {
 
     @Override
     public void updateAI(Player target, double deltaTime) {
-        checkAggro(target);
-        if (!aggroed) return;
 
-        double dist = distanceTo(target);
-        if (dist <= attackRange && currentAttackCooldown <= 0) {
-            target.takeDamage(attackDamage);
-            currentAttackCooldown = attackCooldown;
-        } else if (dist > attackRange) {
-            moveToward(target.getCenterX(), target.getCenterY(), deltaTime);
-        }
     }
 
     @Override
     protected void onDeath() {
-        super.onDeath();
-        if (guardedChest != null) {
-            guardedChest.setGuardianDefeated(true);
-        }
+
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(Color.GOLDENROD);
-        gc.fillRect(screenX, screenY, width, height);
+
     }
 }

@@ -23,17 +23,11 @@ public class Blacksmith extends NPC {
 
     @Override
     public void onInteract(Player player) {
-        logger.info(player.getName() + " interacted with Blacksmith");
-        // TODO: trigger CraftingUI screen through GameEngine/ScreenManager
+
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(Color.SADDLEBROWN);
-        gc.fillRect(screenX, screenY, width, height);
-        gc.setFill(Color.WHITE);
-        gc.fillText(name, screenX, screenY - 5);
+
     }
 }

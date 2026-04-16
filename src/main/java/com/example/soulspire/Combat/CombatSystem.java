@@ -19,10 +19,7 @@ public class CombatSystem {
      * Processes a direct melee attack from one entity to another.
      */
     public void processAttack(LivingEntity attacker, LivingEntity target) {
-        if (target.isInvulnerable() || target.isDead()) return;
-        target.takeDamage(attacker.getAttackDamage());
-        logger.info(attacker.getClass().getSimpleName() + " hit " +
-                target.getClass().getSimpleName() + " for " + attacker.getAttackDamage());
+
     }
 
     /**
@@ -30,13 +27,7 @@ public class CombatSystem {
      * Deactivates the projectile after impact.
      */
     public void processProjectileHit(Projectile projectile, LivingEntity target) {
-        if (target.isInvulnerable() || target.isDead()) return;
-        if (projectile.getOwner() == target) return; // No self-hits
 
-        target.takeDamage(projectile.getDamage());
-        projectile.setActive(false);
-        logger.info("Projectile hit " + target.getClass().getSimpleName() +
-                " for " + projectile.getDamage());
     }
 
     /**
@@ -52,15 +43,6 @@ public class CombatSystem {
      */
     public void processAreaDamage(double centerX, double centerY, double radius,
                                   int damage, List<Entity> entities, Entity owner) {
-        List<Entity> targets = CollisionDetector.getEntitiesInArea(
-                centerX, centerY, radius, entities
-        );
-        for (Entity entity : targets) {
-            if (entity instanceof LivingEntity target && entity != owner) {
-                if (!target.isInvulnerable() && !target.isDead()) {
-                    target.takeDamage(damage);
-                }
-            }
-        }
+
     }
 }

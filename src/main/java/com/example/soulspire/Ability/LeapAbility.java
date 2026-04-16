@@ -18,12 +18,6 @@ public class LeapAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        Direction opposite = caster.getFacing().getOpposite();
-        double dx = opposite.getDx() * LEAP_DISTANCE;
-        double dy = opposite.getDy() * LEAP_DISTANCE;
-        caster.setX(caster.getX() + dx);
-        caster.setY(caster.getY() + dy);
-        // TODO: validate not leaping into a wall
-        resetCooldown();
+
     }
 }

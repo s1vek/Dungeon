@@ -31,25 +31,11 @@ public class MeleeEnemy extends Enemy {
 
     @Override
     public void updateAI(Player target, double deltaTime) {
-        checkAggro(target);
-        if (!aggroed) return;
 
-        double dist = distanceTo(target);
-        if (dist <= attackRange && currentAttackCooldown <= 0) {
-            // Attack the player
-            target.takeDamage(attackDamage);
-            currentAttackCooldown = attackCooldown;
-        } else if (dist > attackRange) {
-            // Chase the player
-            moveToward(target.getCenterX(), target.getCenterY(), deltaTime);
-        }
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(Color.CRIMSON);
-        gc.fillRect(screenX, screenY, width, height);
+
     }
 }

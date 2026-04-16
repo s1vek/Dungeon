@@ -34,54 +34,24 @@ public class BossEnemy extends Enemy {
 
     @Override
     public void updateAI(Player target, double deltaTime) {
-        checkAggro(target);
-        if (!aggroed) return;
 
-        checkPhaseTransition();
-
-        double dist = distanceTo(target);
-        if (dist <= attackRange && currentAttackCooldown <= 0) {
-            target.takeDamage(attackDamage);
-            currentAttackCooldown = attackCooldown;
-        } else if (dist > attackRange) {
-            moveToward(target.getCenterX(), target.getCenterY(), deltaTime);
-        }
     }
 
     /**
      * Checks if the boss should transition to a new phase based on remaining health.
      */
     private void checkPhaseTransition() {
-        if (currentPhase == 1 && getHealthPercent() <= 0.5 && !phaseTransitioned) {
-            currentPhase = 2;
-            phaseTransitioned = true;
-            // Phase 2: faster and stronger
-            attackDamage = (int)(attackDamage * 1.5);
-            attackCooldown *= 0.7;
-            moveSpeed *= 1.3;
-            logger.info("Boss entered phase 2!");
-        }
+
     }
 
     @Override
     protected void onDeath() {
-        super.onDeath();
-        logger.info("Boss defeated! Victory!");
+
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(currentPhase == 1 ? Color.DARKRED : Color.RED);
-        gc.fillRect(screenX, screenY, width, height);
-        // Draw health bar above boss
-        double barWidth = width;
-        double barHeight = 4;
-        gc.setFill(Color.GRAY);
-        gc.fillRect(screenX, screenY - 8, barWidth, barHeight);
-        gc.setFill(Color.RED);
-        gc.fillRect(screenX, screenY - 8, barWidth * getHealthPercent(), barHeight);
+
     }
 
     public int getCurrentPhase() { return currentPhase; }

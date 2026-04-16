@@ -59,11 +59,7 @@ public abstract class NPC extends Entity implements Interactable {
      */
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        // Subclasses draw their specific sprite here
-        // Draw name label above
-        gc.fillText(name, screenX + width / 2, screenY - 10);
+
     }
 
     @Override

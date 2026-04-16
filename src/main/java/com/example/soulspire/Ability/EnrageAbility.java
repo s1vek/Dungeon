@@ -24,28 +24,11 @@ public class EnrageAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        if (active) return;
-        active = true;
-        remainingDuration = DURATION;
-        originalDamage = caster.getAttackDamage();
-        originalMaxHealth = caster.getMaxHealth();
 
-        caster.setAttackDamage((int)(originalDamage * DAMAGE_BOOST));
-        caster.setMaxHealth(originalMaxHealth + HEALTH_BOOST);
-        caster.heal(HEALTH_BOOST);
-        resetCooldown();
     }
 
     @Override
     public void update(double deltaTime) {
-        super.update(deltaTime);
-        if (active) {
-            remainingDuration -= deltaTime;
-            if (remainingDuration <= 0) {
-                active = false;
-                // Revert is handled externally or via stored player reference
-                // TODO: store caster reference to revert stats
-            }
-        }
+
     }
 }

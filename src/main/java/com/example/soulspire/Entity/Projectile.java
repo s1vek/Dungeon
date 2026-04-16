@@ -54,24 +54,12 @@ public class Projectile extends Entity {
 
     @Override
     public void update(double deltaTime) {
-        double moveX = velocityX * deltaTime;
-        double moveY = velocityY * deltaTime;
-        x += moveX;
-        y += moveY;
-        distanceTraveled += Math.sqrt(moveX * moveX + moveY * moveY);
 
-        // Despawn if max range exceeded
-        if (distanceTraveled >= maxRange) {
-            setActive(false);
-        }
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(color);
-        gc.fillOval(screenX, screenY, width, height);
+
     }
 
     public int getDamage() { return damage; }

@@ -110,12 +110,7 @@ public abstract class Player extends LivingEntity implements Saveable {
      * @param targetY mouse Y position for ability targeting
      */
     public void useAbility(int index, double targetX, double targetY) {
-        if (index < 0 || index >= ABILITY_COUNT) return;
-        Ability ability = abilities[index];
-        if (ability != null && ability.isReady()) {
-            ability.execute(this, targetX, targetY);
-            logger.info(name + " used ability: " + ability.getName());
-        }
+
     }
 
     /**
@@ -125,15 +120,7 @@ public abstract class Player extends LivingEntity implements Saveable {
      * @param nearbyEntities list of entities on the current floor
      */
     public void interact(List<Entity> nearbyEntities) {
-        for (Entity entity : nearbyEntities) {
-            if (entity instanceof Interactable interactable
-                    && interactable.canInteract()
-                    && distanceTo(entity) <= interactable.getInteractionRange()) {
-                interactable.onInteract(this);
-                logger.info(name + " interacted with " + entity.getClass().getSimpleName());
-                return;
-            }
-        }
+
     }
 
     /**
@@ -143,11 +130,7 @@ public abstract class Player extends LivingEntity implements Saveable {
      * @return true if the item was added, false if inventory is full
      */
     public boolean collectItem(Item item) {
-        boolean collected = inventory.addItem(item);
-        if (collected) {
-            logger.info(name + " collected: " + item.getName());
-        }
-        return collected;
+        return false;
     }
 
     /**
@@ -158,13 +141,7 @@ public abstract class Player extends LivingEntity implements Saveable {
      * @param spawnY y position to respawn at
      */
     public void respawn(double spawnX, double spawnY) {
-        lives--;
-        currentHealth = maxHealth;
-        invulnerable = false;
-        invulnerabilityTimer = 0;
-        x = spawnX;
-        y = spawnY;
-        logger.info(name + " respawned. Lives remaining: " + lives);
+
     }
 
     /**
@@ -174,19 +151,7 @@ public abstract class Player extends LivingEntity implements Saveable {
      */
     @Override
     public void update(double deltaTime) {
-        updateInvulnerability(deltaTime);
 
-        // Update attack cooldown
-        if (currentAttackCooldown > 0) {
-            currentAttackCooldown -= deltaTime;
-        }
-
-        // Update all ability cooldowns
-        for (Ability ability : abilities) {
-            if (ability != null) {
-                ability.update(deltaTime);
-            }
-        }
     }
 
     /**
@@ -212,26 +177,12 @@ public abstract class Player extends LivingEntity implements Saveable {
 
     @Override
     public Map<String, Object> toSaveData() {
-        return Map.of(
-                "name", name,
-                "playerType", playerType.name(),
-                "lives", lives,
-                "maxHealth", maxHealth,
-                "attackDamage", attackDamage,
-                "defense", defense,
-                "inventory", inventory.toSaveData()
-        );
+
     }
 
     @Override
     public void loadSaveData(Map<String, Object> data) {
-        this.name = (String) data.get("name");
-        this.lives = (int) data.get("lives");
-        this.maxHealth = (int) data.get("maxHealth");
-        this.currentHealth = this.maxHealth;
-        this.attackDamage = (int) data.get("attackDamage");
-        this.defense = (int) data.get("defense");
-        // Inventory loading delegated to Inventory.loadSaveData()
+
     }
 
     // --- Getters ---

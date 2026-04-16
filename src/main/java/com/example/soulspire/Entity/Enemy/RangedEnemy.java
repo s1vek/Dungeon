@@ -33,30 +33,7 @@ public class RangedEnemy extends Enemy {
 
     @Override
     public void updateAI(Player target, double deltaTime) {
-        checkAggro(target);
-        if (!aggroed) return;
 
-        double dist = distanceTo(target);
-
-        if (dist < preferredDistance) {
-            // Too close — retreat away from player
-            double dx = getCenterX() - target.getCenterX();
-            double dy = getCenterY() - target.getCenterY();
-            double len = Math.sqrt(dx * dx + dy * dy);
-            if (len > 0) {
-                x += (dx / len) * moveSpeed * deltaTime;
-                y += (dy / len) * moveSpeed * deltaTime;
-            }
-        } else if (dist > attackRange) {
-            // Too far — approach
-            moveToward(target.getCenterX(), target.getCenterY(), deltaTime);
-        }
-
-        // Shoot when in range and cooldown ready
-        if (dist <= attackRange && currentAttackCooldown <= 0) {
-            shoot(target.getCenterX(), target.getCenterY());
-            currentAttackCooldown = attackCooldown;
-        }
     }
 
     /**
@@ -64,11 +41,7 @@ public class RangedEnemy extends Enemy {
      * The projectile must be added to the floor's entity list by GameEngine.
      */
     private void shoot(double targetX, double targetY) {
-        lastFiredProjectile = new Projectile(
-                getCenterX(), getCenterY(), targetX, targetY,
-                projectileSpeed, attackDamage, attackRange * 1.5, this
-        );
-        lastFiredProjectile.setColor(Color.ORANGERED);
+
     }
 
     /**
@@ -77,17 +50,16 @@ public class RangedEnemy extends Enemy {
      *
      * @return the projectile to spawn, or null if none was fired this frame
      */
+
+    /*
     public Projectile consumeProjectile() {
-        Projectile p = lastFiredProjectile;
-        lastFiredProjectile = null;
-        return p;
+
     }
+
+     */
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(Color.DARKORANGE);
-        gc.fillOval(screenX, screenY, width, height);
+
     }
 }

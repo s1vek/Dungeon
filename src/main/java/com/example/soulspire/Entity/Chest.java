@@ -36,12 +36,7 @@ public class Chest extends Entity implements Interactable {
 
     @Override
     public void onInteract(Player player) {
-        if (!canInteract()) return;
 
-        opened = true;
-        reward.activate();
-        player.collectItem(reward);
-        logger.info("Chest opened, player received: " + reward.getName());
     }
 
     @Override
@@ -61,10 +56,7 @@ public class Chest extends Entity implements Interactable {
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        gc.setFill(opened ? Color.GRAY : (guardianDefeated ? Color.GOLD : Color.DARKGOLDENROD));
-        gc.fillRect(screenX, screenY, width, height);
+
     }
 
     /**

@@ -34,14 +34,13 @@ public class CraftingRecipe {
      * @param inventory the player's inventory
      * @return true if all required materials are available
      */
+
+    /*
     public boolean canCraft(Inventory inventory) {
-        for (Map.Entry<MaterialType, Integer> entry : requiredMaterials.entrySet()) {
-            if (inventory.getMaterialCount(entry.getKey()) < entry.getValue()) {
-                return false;
-            }
-        }
-        return true;
+
     }
+
+     */
 
     public String getResultName() { return resultName; }
     public Equipment getResult() { return result; }

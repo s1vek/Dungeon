@@ -25,28 +25,11 @@ public class AstralWolfAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        if (active) return;
-        active = true;
-        remainingDuration = DURATION;
-        casterRef = caster;
-        originalSpeed = caster.getMoveSpeed();
-        caster.setMoveSpeed(originalSpeed * SPEED_MULTIPLIER);
-        // TODO: swap sprite to wolf form
-        resetCooldown();
+
     }
 
     @Override
     public void update(double deltaTime) {
-        super.update(deltaTime);
-        if (active) {
-            remainingDuration -= deltaTime;
-            if (remainingDuration <= 0) {
-                active = false;
-                if (casterRef != null) {
-                    casterRef.setMoveSpeed(originalSpeed);
-                    // TODO: swap sprite back to normal
-                }
-            }
-        }
+
     }
 }

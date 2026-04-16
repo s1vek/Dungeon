@@ -102,14 +102,7 @@ public abstract class Enemy extends LivingEntity {
      * @param deltaTime time elapsed since last frame
      */
     protected void moveToward(double targetX, double targetY, double deltaTime) {
-        double dx = targetX - getCenterX();
-        double dy = targetY - getCenterY();
 
-        if (Math.abs(dx) > Math.abs(dy)) {
-            move(dx > 0 ? Direction.RIGHT : Direction.LEFT, deltaTime);
-        } else {
-            move(dy > 0 ? Direction.DOWN : Direction.UP, deltaTime);
-        }
     }
 
     /**
@@ -118,10 +111,7 @@ public abstract class Enemy extends LivingEntity {
      * @param target the player to check distance against
      */
     protected void checkAggro(Player target) {
-        if (!aggroed && distanceTo(target) <= aggroRange) {
-            aggroed = true;
-            logger.info(getClass().getSimpleName() + " aggroed on " + target.getName());
-        }
+
     }
 
     /**
@@ -141,16 +131,12 @@ public abstract class Enemy extends LivingEntity {
      */
     @Override
     protected void onDeath() {
-        super.onDeath();
-        setActive(false);
+
     }
 
     @Override
     public void update(double deltaTime) {
-        updateInvulnerability(deltaTime);
-        if (currentAttackCooldown > 0) {
-            currentAttackCooldown -= deltaTime;
-        }
+
     }
 
     /**

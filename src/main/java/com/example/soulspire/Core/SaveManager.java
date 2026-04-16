@@ -32,21 +32,7 @@ public class SaveManager {
      * @param tower  the tower to save
      */
     public static void save(Player player, Tower tower) {
-        try {
-            Map<String, Object> saveData = new HashMap<>();
-            saveData.put("player", player.toSaveData());
-            saveData.put("tower", tower.toSaveData());
 
-            // Simple serialization — write as string representation
-            // TODO: Replace with Gson/Jackson for proper JSON serialization
-            try (ObjectOutputStream oos = new ObjectOutputStream(
-                    new FileOutputStream(GameConfig.SAVE_FILE_PATH))) {
-                oos.writeObject(saveData);
-            }
-            logger.info("Game saved to " + GameConfig.SAVE_FILE_PATH);
-        } catch (IOException e) {
-            logger.error("Failed to save game", e);
-        }
     }
 
     /**
@@ -54,20 +40,14 @@ public class SaveManager {
      *
      * @return the loaded data map, or null if no save exists
      */
+
+    /*
     @SuppressWarnings("unchecked")
     public static Map<String, Object> load() {
-        try {
-            if (!hasSaveFile()) return null;
 
-            try (ObjectInputStream ois = new ObjectInputStream(
-                    new FileInputStream(GameConfig.SAVE_FILE_PATH))) {
-                return (Map<String, Object>) ois.readObject();
-            }
-        } catch (IOException | ClassNotFoundException e) {
-            logger.error("Failed to load save", e);
-            return null;
-        }
     }
+
+     */
 
     /**
      * Creates an auto-save using a background Task (threading requirement).
@@ -96,11 +76,6 @@ public class SaveManager {
      * Deletes the save file.
      */
     public static void deleteSave() {
-        try {
-            Files.deleteIfExists(Path.of(GameConfig.SAVE_FILE_PATH));
-            logger.info("Save file deleted");
-        } catch (IOException e) {
-            logger.error("Failed to delete save", e);
-        }
+
     }
 }

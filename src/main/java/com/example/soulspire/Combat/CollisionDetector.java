@@ -33,40 +33,22 @@ public class CollisionDetector {
      * @param newY   proposed y position
      * @return true if the position is blocked
      */
+    /*
     public static boolean checkTileCollision(Entity entity, Floor floor, double newX, double newY) {
-        int tileSize = GameConfig.TILE_SIZE;
 
-        // Check all four corners of the entity's hitbox
-        int leftTile = (int)(newX / tileSize);
-        int rightTile = (int)((newX + entity.getWidth() - 1) / tileSize);
-        int topTile = (int)(newY / tileSize);
-        int bottomTile = (int)((newY + entity.getHeight() - 1) / tileSize);
-
-        for (int ty = topTile; ty <= bottomTile; ty++) {
-            for (int tx = leftTile; tx <= rightTile; tx++) {
-                Tile tile = floor.getTileAt(tx, ty);
-                if (tile == null || !tile.isWalkable()) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
+
+     */
 
     /**
      * Returns all entities within a circular area.
      */
+
+    /*
     public static List<Entity> getEntitiesInArea(double centerX, double centerY,
                                                  double radius, List<Entity> entities) {
-        List<Entity> result = new ArrayList<>();
-        double r2 = radius * radius;
-        for (Entity e : entities) {
-            double dx = e.getCenterX() - centerX;
-            double dy = e.getCenterY() - centerY;
-            if (dx * dx + dy * dy <= r2) {
-                result.add(e);
-            }
-        }
-        return result;
+
     }
+
+     */
 }

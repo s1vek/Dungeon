@@ -22,21 +22,6 @@ public class SpreadShotAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        double cx = caster.getCenterX();
-        double cy = caster.getCenterY();
-        double baseAngle = Math.atan2(targetY - cy, targetX - cx);
 
-        for (int i = 0; i < ARROW_COUNT; i++) {
-            double angleOffset = SPREAD_ANGLE * ((double)i / (ARROW_COUNT - 1) - 0.5);
-            double angle = baseAngle + angleOffset;
-            double tx = cx + Math.cos(angle) * ARROW_RANGE;
-            double ty = cy + Math.sin(angle) * ARROW_RANGE;
-
-            Projectile arrow = new Projectile(cx, cy, tx, ty,
-                    ARROW_SPEED, caster.getAttackDamage(), ARROW_RANGE, caster);
-            arrow.setColor(Color.LIGHTGREEN);
-            // TODO: add arrow to floor entities
-        }
-        resetCooldown();
     }
 }

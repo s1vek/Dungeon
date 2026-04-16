@@ -18,9 +18,6 @@ public class FirestrikeAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        int damage = (int)(caster.getAttackDamage() * DAMAGE_MULTIPLIER);
-        // TODO: deal damage to enemies in arc in front (wider than basic attack)
-        // using CombatSystem.processAreaDamage with directional check
-        resetCooldown();
+
     }
 }

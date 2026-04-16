@@ -72,22 +72,9 @@ public abstract class LivingEntity extends Entity {
      * Applies damage to this entity after subtracting defense.
      * Damage is ignored if the entity is currently invulnerable.
      * Activates invulnerability frames after a successful hit.
-     *
-     * @param amount raw damage before defense reduction (must be positive)
      */
     public void takeDamage(int amount) {
-        if (invulnerable || !active) return;
 
-        int effectiveDamage = Math.max(1, amount - defense);
-        currentHealth = Math.max(0, currentHealth - effectiveDamage);
-        invulnerable = true;
-        invulnerabilityTimer = IFRAME_DURATION;
-
-        logger.info(getClass().getSimpleName() + " took " + effectiveDamage + " damage, HP: " + currentHealth + "/" + maxHealth);
-
-        if (isDead()) {
-            onDeath();
-        }
     }
 
     /**
@@ -96,8 +83,7 @@ public abstract class LivingEntity extends Entity {
      * @param amount health points to restore (must be positive)
      */
     public void heal(int amount) {
-        currentHealth = Math.min(maxHealth, currentHealth + amount);
-        logger.info(getClass().getSimpleName() + " healed " + amount + ", HP: " + currentHealth + "/" + maxHealth);
+
     }
 
     /**
@@ -109,9 +95,7 @@ public abstract class LivingEntity extends Entity {
      * @param deltaTime time elapsed since last frame in seconds
      */
     public void move(Direction dir, double deltaTime) {
-        this.x += dir.getDx() * moveSpeed * deltaTime;
-        this.y += dir.getDy() * moveSpeed * deltaTime;
-        this.facing = dir;
+
     }
 
     /**
@@ -119,7 +103,7 @@ public abstract class LivingEntity extends Entity {
      * (e.g. enemies drop loot, players lose a life).
      */
     protected void onDeath() {
-        logger.info(getClass().getSimpleName() + " died at position (" + x + ", " + y + ")");
+
     }
 
     /**
@@ -128,13 +112,7 @@ public abstract class LivingEntity extends Entity {
      * @param deltaTime time elapsed since last frame
      */
     protected void updateInvulnerability(double deltaTime) {
-        if (invulnerable) {
-            invulnerabilityTimer -= deltaTime;
-            if (invulnerabilityTimer <= 0) {
-                invulnerable = false;
-                invulnerabilityTimer = 0;
-            }
-        }
+
     }
 
     /**

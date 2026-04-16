@@ -19,11 +19,6 @@ public class FrostTrapAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        double trapX = caster.getCenterX();
-        double trapY = caster.getCenterY();
-        // TODO: create a FrostTrap entity at (trapX, trapY) and add to floor
-        // FrostTrap checks each frame if an enemy is within TRAP_RADIUS
-        // If so → set enemy moveSpeed to 0 for FREEZE_DURATION
-        resetCooldown();
+
     }
 }

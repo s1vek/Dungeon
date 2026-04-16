@@ -22,11 +22,6 @@ public class HealingTotemAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        Totem totem = new Totem(
-                caster.getCenterX() - 12, caster.getCenterY() - 12,
-                HEAL_AMOUNT, HEAL_INTERVAL, RADIUS, DURATION, caster
-        );
-        // TODO: add totem to current floor entities
-        resetCooldown();
+
     }
 }

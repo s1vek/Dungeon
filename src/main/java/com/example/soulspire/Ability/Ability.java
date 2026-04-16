@@ -79,9 +79,6 @@ public abstract class Ability {
      * @param deltaTime time elapsed since last frame in seconds
      */
     public void update(double deltaTime) {
-        if (currentCooldown > 0) {
-            currentCooldown = Math.max(0, currentCooldown - deltaTime);
-        }
     }
 
     /**
@@ -97,10 +94,12 @@ public abstract class Ability {
      *
      * @return cooldown progress (0.0 = ready, 1.0 = full cooldown remaining)
      */
+
+    /*
     public double getCooldownPercent() {
-        if (cooldown <= 0) return 0;
-        return currentCooldown / cooldown;
+
     }
+     */
 
     /**
      * Starts the cooldown timer. Should be called at the end of {@link #execute}.

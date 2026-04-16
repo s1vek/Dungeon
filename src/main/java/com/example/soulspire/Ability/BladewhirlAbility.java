@@ -18,8 +18,6 @@ public class BladewhirlAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        int damage = (int)(caster.getAttackDamage() * DAMAGE_MULTIPLIER);
-        // TODO: use CombatSystem.processAreaDamage(caster.getCenterX(), caster.getCenterY(), RADIUS, damage, entities, caster)
-        resetCooldown();
+
     }
 }

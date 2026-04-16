@@ -19,45 +19,29 @@ public class ScreenManager {
     private GameOverScreen gameOver;
     private VictoryScreen victory;
 
-    public ScreenManager(StackPane root, GameEngine engine) {
-        this.root = root;
-        this.engine = engine;
+    public ScreenManager(StackPane root, GameEngine engine, StackPane root1, GameEngine engine1) {
+        this.root = root1;
+        this.engine = engine1;
     }
 
     /**
      * Initializes all screens. Call once after construction.
      */
     public void initScreens() {
-        mainMenu = new MainMenuScreen(engine, this);
-        characterSelect = new CharacterSelectScreen(engine, this);
-        pauseMenu = new PauseMenu(engine, this);
-        gameOver = new GameOverScreen(engine, this);
-        victory = new VictoryScreen(engine, this);
+
     }
 
     /**
      * Shows the appropriate screen overlay for the given game state.
      */
     public void showScreen(GameState state) {
-        hideAll();
-        switch (state) {
-            case MAIN_MENU -> { root.getChildren().add(mainMenu); mainMenu.setVisible(true); }
-            case CHARACTER_SELECT -> { root.getChildren().add(characterSelect); characterSelect.setVisible(true); }
-            case PAUSED -> { root.getChildren().add(pauseMenu); pauseMenu.setVisible(true); }
-            case GAME_OVER -> { root.getChildren().add(gameOver); gameOver.setVisible(true); }
-            case VICTORY -> { root.getChildren().add(victory); victory.setVisible(true); }
-            default -> {} // PLAYING, SAFE_ZONE — no overlay
-        }
+
     }
 
     /**
      * Removes all screen overlays.
      */
     public void hideAll() {
-        root.getChildren().removeIf(node ->
-                node instanceof MainMenuScreen || node instanceof CharacterSelectScreen ||
-                        node instanceof PauseMenu || node instanceof GameOverScreen ||
-                        node instanceof VictoryScreen
-        );
+
     }
 }

@@ -17,11 +17,6 @@ public class TeleportAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        double dx = caster.getFacing().getDx() * TELEPORT_DISTANCE;
-        double dy = caster.getFacing().getDy() * TELEPORT_DISTANCE;
-        caster.setX(caster.getX() + dx);
-        caster.setY(caster.getY() + dy);
-        // TODO: validate destination is not inside a wall
-        resetCooldown();
+
     }
 }

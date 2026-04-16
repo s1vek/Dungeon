@@ -16,23 +16,16 @@ public class Shaman extends Player {
 
     @Override
     protected void initAbilities() {
-        abilities[0] = new HealingTotemAbility();
-        abilities[1] = new FirestrikeAbility();
-        abilities[2] = new AstralWolfAbility();
+
     }
 
     @Override
     public void attack(double targetX, double targetY) {
-        if (!canAttack()) return;
-        resetAttackCooldown();
+
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        if (invulnerable && ((int)(invulnerabilityTimer * 10) % 2 == 0)) return;
-        gc.setFill(Color.DARKORANGE);
-        gc.fillRect(screenX, screenY, width, height);
+
     }
 }

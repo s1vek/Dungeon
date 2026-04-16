@@ -19,12 +19,6 @@ public class ChargeAbility extends Ability {
 
     @Override
     public void execute(Player caster, double targetX, double targetY) {
-        double dx = caster.getFacing().getDx() * CHARGE_DISTANCE;
-        double dy = caster.getFacing().getDy() * CHARGE_DISTANCE;
-        caster.setX(caster.getX() + dx);
-        caster.setY(caster.getY() + dy);
-        // TODO: check for enemies along path → stun first hit
-        // TODO: check for DESTRUCTIBLE_WALL → break it
-        resetCooldown();
+
     }
 }

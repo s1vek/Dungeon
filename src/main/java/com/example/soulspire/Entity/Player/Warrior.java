@@ -15,24 +15,16 @@ public class Warrior extends Player {
 
     @Override
     protected void initAbilities() {
-        abilities[0] = new ChargeAbility();
-        abilities[1] = new BladewhirlAbility();
-        abilities[2] = new EnrageAbility();
+
     }
 
     @Override
     public void attack(double targetX, double targetY) {
-        if (!canAttack()) return;
-        resetAttackCooldown();
+
     }
 
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
-        double screenX = x - cameraX;
-        double screenY = y - cameraY;
-        // Blink when invulnerable (iframes)
-        if (invulnerable && ((int)(invulnerabilityTimer * 10) % 2 == 0)) return;
-        gc.setFill(Color.STEELBLUE);
-        gc.fillRect(screenX, screenY, width, height);
+
     }
 }

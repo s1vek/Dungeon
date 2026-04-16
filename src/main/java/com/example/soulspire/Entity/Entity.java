@@ -70,11 +70,7 @@ abstract public class Entity {
      * @return distance in pixels
      */
     public double distanceTo(Entity other) {
-        double cx = x + width / 2;
-        double cy = y + height / 2;
-        double ox = other.x + other.width / 2;
-        double oy = other.y + other.height / 2;
-        return Math.sqrt((cx - ox) * (cx - ox) + (cy - oy) * (cy - oy));
+        return x;
     }
 
     /**
