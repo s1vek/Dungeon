@@ -1,0 +1,27 @@
+package com.example.soulspire.Ability;
+
+import com.example.soulspire.Ability.Ability;
+import com.example.soulspire.Ability.AbilityType;
+import com.example.soulspire.Entity.Player.Player;
+import com.example.soulspire.Entity.Totem;
+
+/**
+ * Shaman ability 1: Places a healing totem that periodically restores HP
+ * to the player when they are within its radius.
+ */
+public class HealingTotemAbility extends Ability {
+
+    private static final int HEAL_AMOUNT = 5;
+    private static final double HEAL_INTERVAL = 1.5;
+    private static final double RADIUS = 100;
+    private static final double DURATION = 12.0;
+
+    public HealingTotemAbility() {
+        super("Healing Totem", "Place a totem that heals you nearby", 18.0, AbilityType.UTILITY);
+    }
+
+    @Override
+    public void execute(Player caster, double targetX, double targetY) {
+
+    }
+}

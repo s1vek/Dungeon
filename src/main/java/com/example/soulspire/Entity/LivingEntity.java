@@ -1,4 +1,150 @@
 package com.example.soulspire.Entity;
 
-abstract public class LivingEntity extends Entity {
+import com.example.soulspire.Util.GameLogger;
+
+/**
+ * Abstract base class for entities that have health and can move, attack, and die.
+ * Extends {@link Entity} with combat-related fields and movement logic.
+ *
+ * <p>Provides invulnerability frames (iframes) after taking damage to prevent
+ * instant death from multiple simultaneous hits.</p>
+ *
+ * <p>Direct subclasses: {@link com.example.soulspire.Entity.Player.Player Player},
+ * {@link com.example.soulspire.Entity.Enemy.Enemy Enemy}</p>
+ */
+public abstract class LivingEntity extends Entity {
+
+    private static final GameLogger logger = GameLogger.getLogger(LivingEntity.class);
+
+    /** Duration of invulnerability after taking damage, in seconds. */
+    protected static final double IFRAME_DURATION = 0.5;
+
+    /** Maximum health points this entity can have. */
+    protected int maxHealth;
+
+    /** Current health points. When this reaches 0, the entity dies. */
+    protected int currentHealth;
+
+    /** Base attack damage dealt by this entity. */
+    protected int attackDamage;
+
+    /** Defense value — subtracted from incoming damage. */
+    protected int defense;
+
+    /** Movement speed in pixels per second. */
+    protected double moveSpeed;
+
+    /** The direction this entity is currently facing. Affects attack direction. */
+    protected Direction facing;
+
+    /** Whether this entity is currently immune to damage (iframe active). */
+    protected boolean invulnerable;
+
+    /** Remaining invulnerability time in seconds. Counts down to zero. */
+    protected double invulnerabilityTimer;
+
+    /**
+     * Creates a new living entity with the given stats.
+     *
+     * @param x            initial x position
+     * @param y            initial y position
+     * @param width        hitbox width
+     * @param height       hitbox height
+     * @param maxHealth    maximum health points
+     * @param attackDamage base attack damage
+     * @param defense      damage reduction value
+     * @param moveSpeed    movement speed in pixels per second
+     */
+    protected LivingEntity(double x, double y, double width, double height,
+                           int maxHealth, int attackDamage, int defense, double moveSpeed) {
+        super(x, y, width, height);
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
+        this.attackDamage = attackDamage;
+        this.defense = defense;
+        this.moveSpeed = moveSpeed;
+        this.facing = Direction.DOWN;
+        this.invulnerable = false;
+        this.invulnerabilityTimer = 0;
+    }
+
+    /**
+     * Applies damage to this entity after subtracting defense.
+     * Damage is ignored if the entity is currently invulnerable.
+     * Activates invulnerability frames after a successful hit.
+     */
+    public void takeDamage(int amount) {
+
+    }
+
+    /**
+     * Restores health points, capped at maximum health.
+     *
+     * @param amount health points to restore (must be positive)
+     */
+    public void heal(int amount) {
+
+    }
+
+    /**
+     * Moves the entity in the given direction based on its speed and elapsed time.
+     * Updates the facing direction. Tile collision must be checked externally
+     * by {@link com.example.soulspire.Combat.CollisionDetector CollisionDetector}.
+     *
+     * @param dir       the direction to move
+     * @param deltaTime time elapsed since last frame in seconds
+     */
+    public void move(Direction dir, double deltaTime) {
+
+    }
+
+    /**
+     * Called when health reaches zero. Subclasses override to add behavior
+     * (e.g. enemies drop loot, players lose a life).
+     */
+    protected void onDeath() {
+
+    }
+
+    /**
+     * Updates invulnerability timer. Should be called by subclass update() methods.
+     *
+     * @param deltaTime time elapsed since last frame
+     */
+    protected void updateInvulnerability(double deltaTime) {
+
+    }
+
+    /**
+     * @return true if current health is zero or below
+     */
+    public boolean isDead() {
+        return currentHealth <= 0;
+    }
+
+    /**
+     * Returns health as a fraction of max health (0.0 to 1.0) for the HP bar UI.
+     *
+     * @return health percentage
+     */
+    public double getHealthPercent() {
+        return (double) currentHealth / maxHealth;
+    }
+
+    // --- Getters and setters ---
+
+    public int getMaxHealth() { return maxHealth; }
+    public void setMaxHealth(int maxHealth) { this.maxHealth = maxHealth; }
+    public int getCurrentHealth() { return currentHealth; }
+    public void setCurrentHealth(int currentHealth) { this.currentHealth = currentHealth; }
+    public int getAttackDamage() { return attackDamage; }
+    public void setAttackDamage(int attackDamage) { this.attackDamage = attackDamage; }
+    public int getDefense() { return defense; }
+    public void setDefense(int defense) { this.defense = defense; }
+    public double getMoveSpeed() { return moveSpeed; }
+    public void setMoveSpeed(double moveSpeed) { this.moveSpeed = moveSpeed; }
+    public Direction getFacing() { return facing; }
+    public void setFacing(Direction facing) { this.facing = facing; }
+    public boolean isInvulnerable() { return invulnerable; }
+    public void setInvulnerable(boolean invulnerable) { this.invulnerable = invulnerable; }
 }
