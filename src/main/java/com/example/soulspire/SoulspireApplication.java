@@ -1,5 +1,6 @@
 package com.example.soulspire;
 
+import com.example.soulspire.UI.CharacterSelectScreen;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,10 +21,10 @@ public class SoulspireApplication extends Application {
         com.example.soulspire.UI.ScreenManager screenManager = new com.example.soulspire.UI.ScreenManager(root, engine);
 
         // Teď vytvoříme samotné menu
-        com.example.soulspire.UI.MainMenuScreen mainMenu = new com.example.soulspire.UI.MainMenuScreen(engine, screenManager);
+        CharacterSelectScreen charSelect = new CharacterSelectScreen(engine, screenManager);
 
         // Zobrazíme to
-        Scene scene = new Scene(mainMenu, 800, 600);
+        Scene scene = new Scene(charSelect);
         stage.setTitle("SoulSpire - Preview");
         stage.setScene(scene);
         stage.show();

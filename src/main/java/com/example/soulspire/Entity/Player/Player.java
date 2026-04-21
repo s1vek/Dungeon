@@ -175,10 +175,13 @@ public abstract class Player extends LivingEntity implements Saveable {
         currentAttackCooldown = attackCooldown;
     }
 
+    /*
     @Override
     public Map<String, Object> toSaveData() {
 
     }
+
+     */
 
     @Override
     public void loadSaveData(Map<String, Object> data) {

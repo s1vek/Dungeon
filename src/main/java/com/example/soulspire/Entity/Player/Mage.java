@@ -8,6 +8,8 @@ import com.example.soulspire.Entity.Projectile;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.Map;
+
 
 public class Mage extends Player {
 
@@ -31,5 +33,10 @@ public class Mage extends Player {
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
 
+    }
+
+    @Override
+    public Map<String, Object> toSaveData() {
+        return Map.of();
     }
 }

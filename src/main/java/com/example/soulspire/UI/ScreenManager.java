@@ -19,9 +19,9 @@ public class ScreenManager {
     private GameOverScreen gameOver;
     private VictoryScreen victory;
 
-    public ScreenManager(StackPane root, GameEngine engine, StackPane root1, GameEngine engine1) {
-        this.root = root1;
-        this.engine = engine1;
+    public ScreenManager(StackPane root, GameEngine engine) {
+        this.root = root;
+        this.engine = engine;
     }
 
     /**

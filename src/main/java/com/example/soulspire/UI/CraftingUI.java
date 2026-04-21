@@ -79,6 +79,7 @@ public class CraftingUI extends VBox {
             Label costLabel = new Label(cost.toString().trim());
             costLabel.setStyle("-fx-text-fill: #bbb; -fx-font-size: 12;");
 
+            /*
             Button craftBtn = new Button("Craft");
             craftBtn.setDisable(!recipe.canCraft(inventory));
             craftBtn.setOnAction(e -> {
@@ -86,8 +87,13 @@ public class CraftingUI extends VBox {
                 refresh();
             });
 
+             */
+
+            /*
             row.getChildren().addAll(nameLabel, costLabel, craftBtn);
             recipeList.getChildren().add(row);
+
+             */
         }
     }
 }

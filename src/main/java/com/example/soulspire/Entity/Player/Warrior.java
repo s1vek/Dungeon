@@ -7,6 +7,8 @@ import com.example.soulspire.Ability.EnrageAbility;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import java.util.Map;
+
 public class Warrior extends Player {
 
     public Warrior(String name, double x, double y) {
@@ -26,5 +28,10 @@ public class Warrior extends Player {
     @Override
     public void render(GraphicsContext gc, double cameraX, double cameraY) {
 
+    }
+
+    @Override
+    public Map<String, Object> toSaveData() {
+        return Map.of();
     }
 }
